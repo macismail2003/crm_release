@@ -16,7 +16,7 @@
 					<PropertyRef Name="SerialNo"/>
 				</Key>
 				<Property Name="SerialNo" Type="Edm.String" MaxLength="50"/>
-				<Property Name="ItemNo" Type="Edm.String" MaxLength="10"/>
+				<Property Name="ItemNo" Type="Edm.Int32" MaxLength="10"/>
 				<Property Name="UnitType" Type="Edm.String" MaxLength="10"/>
 				<Property Name="RequestedQuan" Type="Edm.Int32" MaxLength="10"/>
 				<Property Name="Location" Type="Edm.String" MaxLength="10"/>
@@ -34,8 +34,8 @@
 				<Property Name="LocationCode" Type="Edm.String" MaxLength="10"/>
 				<Property Name="Depo" Type="Edm.String" MaxLength="10"/>
 				<Property Name="DepoCode" Type="Edm.String" MaxLength="10"/>
-				<Property Name="AvailableQuan" Type="Edm.String" MaxLength="10"/>
-				<Property Name="RequestedQuan" Type="Edm.String" MaxLength="10"/>
+				<Property Name="AvailableQuan" Type="Edm.Int32" MaxLength="10"/>
+				<Property Name="RequestedQuan" Type="Edm.Int32" MaxLength="10"/>
 			</EntityType>
 			<EntityContainer Name="BookingLeasing" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
 				<EntitySet EntityType="BookingModel.Booking" Name="Bookings"/>

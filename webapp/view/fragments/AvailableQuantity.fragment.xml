@@ -4,7 +4,7 @@
 	<Dialog contentHeight="80%" contentWidth="60%" draggable="true" showHeader="false">
 		<Page title="Depo">
 			<Panel expanded="true">
-				<table:Table id="idAvailableQuantityTable" rows="{booking>/availableQuantity}" selectionMode="{booking>/SelectioMode}"
+				<table:Table id="idAvailableQuantityTable" rows="{booking>/availableQuantity}" selectionMode="Multi"
 					 rowSelectionChange="onPressConfirmSelectAvailableQuan" visibleRowCountMode="Fixed" visibleRowCount="10">
 					<table:columns>
 						<table:Column>
@@ -19,10 +19,10 @@
 								<Text text="{booking>AvailableQuan}" wrapping="true"/>
 							</table:template>
 						</table:Column>
-							<table:Column visible="{booking>/RequestedQuantity}">
+							<table:Column>
 							<Label text="Requested Quantity" />
 							<table:template>
-								<Text text="{booking>RequestedQuan}"/>
+								<Input value="{booking>RequestedQuan}"/>
 							</table:template>
 						</table:Column>
 					</table:columns>

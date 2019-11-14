@@ -101,7 +101,7 @@
 									<Input value="{Location}"/>
 								</table:template>
 							</table:Column>
-							<table:Column>
+							<table:Column visible="{booking>/unitTypeEditable}">
 								<table:template>
 									<core:Icon src="sap-icon://check-availability" press="onPressAvailability"/>
 								</table:template>
