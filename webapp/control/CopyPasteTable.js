@@ -30,7 +30,7 @@ sap.ui.define([
 		
 			for ( int = 0; int < rows.length-1; int++) {
 				var rows_element = rows[int];
-				 cells = rows_element.split(/\t/);
+				 cells = rows_element.split(/\t/); 
 
 				
 				var originalObject = model.getProperty(itemsPath+"/"+startRowIndex++);
