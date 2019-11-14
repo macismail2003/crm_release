@@ -22,12 +22,12 @@ sap.ui.define([
 			});
 			this.setModel(oModel, "booking");
 
-			this.getOwnerComponent().getModel().read("/Bookings", { 
+			this.getOwnerComponent().getModel().read("/Bookings", {
 				success: function (oData) {
 					this.aLeaseData = oData.results;
 				}.bind(this)
 			});
-			
+
 			this.getOwnerComponent().getModel().read("/LocationSet", {
 				success: function (oData) {
 					this.aAvailableQuantiy = oData.results;
@@ -125,41 +125,41 @@ sap.ui.define([
 			if (bRB1) {
 				this.getView().getModel("booking").setProperty("/unitTypeEditable", false);
 			} else {
-			this.getView().getModel("booking").setProperty("/unitTypeEditable", true);
+				this.getView().getModel("booking").setProperty("/unitTypeEditable", true);
 			}
 		},
-		
-		onPressAvailability: function(oEvent){
+
+		onPressAvailability: function (oEvent) {
 			var bRB1 = this.byId("idRBOBS").getProperty("selected");
 			var oTableObject = oEvent.getSource().getBindingContext().getObject();
 			var sPath = oEvent.getSource().getBindingContext().sPath.split("/")[2];
 			this.iDepoIndex = parseInt(sPath);
-			if(oTableObject.Location){
-			if (!this._oAvailableQuantityDialog) {
-				this._oAvailableQuantityDialog = sap.ui.xmlfragment("idAvailableQuantityDialog",
-					"com.seaco.zbooking.zbooking.view.fragments.AvailableQuantity", this);
-				this.getView().addDependent(this._oAvailableQuantityDialog);
-			}
-			if(bRB1){
-				this.getView().getModel("booking").setProperty("/SelectioMode", "Single");
-			} else {
-				this.getView().getModel("booking").setProperty("/SelectioMode", "Multi");
-			}
-			var aFilterItem = this.aAvailableQuantiy.filter(function (oFilterItem) {
+			if (oTableObject.Location) {
+				if (bRB1) {
+					this.getView().getModel("booking").setProperty("/SelectioMode", "Single");
+				} else {
+					this.getView().getModel("booking").setProperty("/SelectioMode", "Multi");
+				}
+				if (!this._oAvailableQuantityDialog) {
+					this._oAvailableQuantityDialog = sap.ui.xmlfragment("idAvailableQuantityDialog",
+						"com.seaco.zbooking.zbooking.view.fragments.AvailableQuantity", this);
+					this.getView().addDependent(this._oAvailableQuantityDialog);
+				}
+				var aFilterItem = this.aAvailableQuantiy.filter(function (oFilterItem) {
 					return oFilterItem.Location === oTableObject.Location;
 				});
-			this.getView().getModel("booking").setProperty("/availableQuantity", aFilterItem);
-			this._oAvailableQuantityDialog.open();
-	
+				this.getView().getModel("booking").setProperty("/availableQuantity", aFilterItem);
+				this._oAvailableQuantityDialog.open();
+
 			}
 		},
-		
-		onPressConfirmSelectAvailableQuan: function(oEvent){
-			
+
+		onPressConfirmSelectAvailableQuan: function (oEvent) {
+
 			this.getView().getModel("booking").setProperty("/RequestedQuantity", true);
 		},
-		
-		onPressConfirmSelectDepo: function(){
+
+		onPressConfirmSelectDepo: function () {
 			var oTable = sap.ui.core.Fragment.byId("idAvailableQuantityDialog", "idAvailableQuantityTable");
 			var iSelectedIndex = oTable.getSelectedIndex();
 			if (iSelectedIndex !== -1) {
