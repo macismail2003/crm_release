@@ -143,7 +143,7 @@ sap.ui.define([
 			if(bRB1){
 				this.getView().getModel("booking").setProperty("/SelectioMode", "Single");
 			} else {
-				this.getView().getModel("booking").setProperty("/SelectioMode", "Multi")
+				this.getView().getModel("booking").setProperty("/SelectioMode", "Multi");
 			}
 			var aFilterItem = this.aAvailableQuantiy.filter(function (oFilterItem) {
 					return oFilterItem.Location === oTableObject.Location;
