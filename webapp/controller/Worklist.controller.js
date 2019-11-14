@@ -22,7 +22,7 @@ sap.ui.define([
 			});
 			this.setModel(oModel, "booking");
 
-			this.getOwnerComponent().getModel().read("/Bookings", {
+			this.getOwnerComponent().getModel().read("/Bookings", { 
 				success: function (oData) {
 					this.aLeaseData = oData.results;
 				}.bind(this)
