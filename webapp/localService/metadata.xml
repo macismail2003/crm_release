@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="BookingModel" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+			<EntityType Name="Booking">
+				<Key>
+					<PropertyRef Name="Customer"/>
+					<PropertyRef Name="Lease"/>
+				</Key>
+				<Property Name="Customer" Type="Edm.String" MaxLength="50"/>
+				<Property Name="Lease" Type="Edm.String" MaxLength="50"/>
+			</EntityType>
+			<EntityType Name="BookingItem">
+				<Key>
+					<PropertyRef Name="SerialNo"/>
+				</Key>
+				<Property Name="SerialNo" Type="Edm.String" MaxLength="50"/>
+				<Property Name="ItemNo" Type="Edm.String" MaxLength="10"/>
+				<Property Name="UnitType" Type="Edm.String" MaxLength="10"/>
+				<Property Name="RequestedQuan" Type="Edm.Int32" MaxLength="10"/>
+				<Property Name="Location" Type="Edm.String" MaxLength="10"/>
+				<Property Name="DepoCode" Type="Edm.String" MaxLength="10"/>
+				<Property Name="ReleasedQuan" Type="Edm.Int32" MaxLength="10"/>
+				<Property Name="Comments" Type="Edm.String" MaxLength="10"/>
+				<Property Name="LastCargo" Type="Edm.String" MaxLength="10"/>
+			</EntityType>
+			<EntityType Name="Location">
+				<Key>
+					<PropertyRef Name="LocationCode"/>
+					<PropertyRef Name="DepoCode"/>
+				</Key>
+				<Property Name="Location" Type="Edm.String" MaxLength="50"/>
+				<Property Name="LocationCode" Type="Edm.String" MaxLength="10"/>
+				<Property Name="Depo" Type="Edm.String" MaxLength="10"/>
+				<Property Name="DepoCode" Type="Edm.String" MaxLength="10"/>
+				<Property Name="AvailableQuan" Type="Edm.String" MaxLength="10"/>
+				<Property Name="RequestedQuan" Type="Edm.String" MaxLength="10"/>
+			</EntityType>
+			<EntityContainer Name="BookingLeasing" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+				<EntitySet EntityType="BookingModel.Booking" Name="Bookings"/>
+				<EntitySet EntityType="BookingModel.BookingItem" Name="BookingItems"/>
+				<EntitySet EntityType="BookingModel.Location" Name="LocationSet"/>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

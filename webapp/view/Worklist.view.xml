@@ -1,0 +1,143 @@
+<mvc:View
+	controllerName="com.seaco.zbooking.zbooking.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" 
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core"
+	xmlns:c="com.seaco.zbooking.zbooking.control"
+	xmlns:table="sap.ui.table">
+	<Page id="page" title="Booking">
+		<content>
+			<Panel>
+			<!--<fb:FilterBar -->
+			<!--	header="Booking" id="bookingfilterBarId" search="onSearch">-->
+			<!--	<fb:filterGroupItems>-->
+				
+						
+			<!--		<fb:FilterGroupItem groupName="__$INTERNAL" name="Customer" label="Customer" visibleInFilterBar="true" mandatory="true">-->
+			<!--			<fb:control>-->
+			<!--				<Input value = ""/>-->
+			<!--			</fb:control>-->
+			<!--		</fb:FilterGroupItem>-->
+			<!--		<fb:FilterGroupItem groupName="__$INTERNAL1" name="button"  visibleInFilterBar="true">-->
+			<!--			<fb:control>-->
+			<!--				<Button text="Get Lease" press="onPress" />-->
+			<!--			</fb:control>-->
+			<!--		</fb:FilterGroupItem>-->
+			<!--		<fb:FilterGroupItem groupName="__$INTERNAL$" name="Lease" label="Lease"  visibleInFilterBar="true" mandatory="true">-->
+			<!--			<fb:control>-->
+			<!--				<MultiInput class="sapUiSmallMarginEnd" id="multiInput" valueHelpRequest="onValueHelpRequested"/>-->
+			<!--			</fb:control>-->
+			<!--		</fb:FilterGroupItem>-->
+				
+			<!--			<fb:FilterGroupItem groupName="__$INTERNAL5" name="OrderBySerial" label="Order By Serial"  visibleInFilterBar="true">-->
+			<!--			<fb:control>-->
+			<!--				<RadioButton groupName="GroupA" />-->
+			<!--			</fb:control>-->
+			<!--		</fb:FilterGroupItem>-->
+			<!--		<fb:FilterGroupItem  groupName="__$INTERNAL4" name="Lease" label="OrderByQuantity"  visibleInFilterBar="true">-->
+			<!--			<fb:control>-->
+			<!--				<RadioButton groupName="GroupA" />-->
+			<!--			</fb:control>-->
+			<!--		</fb:FilterGroupItem>-->
+				
+				
+			<!--	</fb:filterGroupItems>-->
+			<!--</fb:FilterBar>-->
+			
+			<content>
+					<f:SimpleForm id="form" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+						adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+						singleContainerFullSize="false">
+						<f:content>
+							<Label   text="Customer" />
+							<Input value ="{booking>/Customer}" id="customerId"/>
+							<!--<Label   text="Customer Name"/>-->
+							<Button text="Get Lease" press="onPressGetLease" />
+							<Label text="Lease"/>
+							<MultiInput id="multiInput" value="{booking>/lease}" valueHelpRequest="onValueHelpLeaseRequested"/>
+							<core:Title text=""/>
+							<RadioButton groupName="GroupA" text = "Order By Serial" id="idRBOBS"/>
+							<RadioButton groupName="GroupA" text = "Order By Unit Type" id="idRBOUT"/>
+							<Button text="GO" type="Emphasized" press="onPressGo"/>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+		</Panel>
+		<Panel>
+			<content>
+				<c:CopyPasteTable id="idTable" rows="{/items}" selectionMode="None" visible="{booking>/tableVisibility}">
+						<c:columns>
+							<table:Column>
+								<Label text="Item No"/>
+								<table:template>
+									<Text text="{ItemNo}"/>
+								</table:template>
+							</table:Column>
+							<table:Column width="auto">
+								<Label text="Serial No"/>
+								<table:template>
+									<Input value="{SerialNo}" editable="{= !${booking>/unitTypeEditable}}"/>
+								</table:template>
+							</table:Column>
+							<table:Column width="auto">
+								<Label text="Unit Type"/>
+								<table:template>
+									<Input value="{UnitType}" editable="{booking>/unitTypeEditable}"/>
+								</table:template>
+							</table:Column>
+							<table:Column  width="auto">
+								<Label text="Requested Quantity" wrapping="true"/>
+								<table:template>
+									<Input value="{RequestedQuan}" editable="{booking>/unitTypeEditable}"/>
+								</table:template>
+							</table:Column>
+							<table:Column width="auto">
+								<Label text="Location"/>
+								<table:template>
+									<Input value="{Location}"/>
+								</table:template>
+							</table:Column>
+							<table:Column>
+								<table:template>
+									<core:Icon src="sap-icon://check-availability" press="onPressAvailability"/>
+								</table:template>
+							</table:Column>
+							<table:Column width="auto">
+								<Label text="Depo Code"/>
+								<table:template>
+									<Text text="{DepoCode}"/>
+								</table:template>
+							</table:Column>
+							<table:Column  width="auto">
+								<Label text="Released Quantity" wrapping="true"/>
+								<table:template>
+									<Text text="{ReleasedQuan}"/>
+								</table:template>
+							</table:Column>
+							<table:Column  width="auto">
+								<Label text="Comment"/>
+								<table:template>
+									<Input value="{Comments}"/>
+								</table:template>
+							</table:Column>
+							<table:Column>
+								<Label text="Last Cargo"/>
+								<table:template>
+									<Input value="{LastCargo}"/>
+								</table:template>
+							</table:Column>
+						</c:columns>
+					</c:CopyPasteTable>
+			</content>
+		</Panel>
+			
+		</content>
+	
+	</Page>
+	
+
+</mvc:View>

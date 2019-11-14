@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:valuehelp="sap.ui.comp.valuehelpdialog" xmlns:fb="sap.ui.comp.filterbar">
+	<Dialog contentHeight="80%" contentWidth="60%" draggable="true" showHeader="false">
+		<Page title="Lease">
+			<f:SimpleForm editable="true">
+				<fb:FilterBar advancedMode="true" showGoOnFB="true" search="onSearch">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem groupName="Lease" name="Lease" label="Lease">
+							<fb:control>
+								<Input id="idLease" type="Text"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+			</f:SimpleForm>
+			<Panel expanded="true">
+				<table:Table id="idLeaseTable" rows="{booking>/listLease}" selectionMode="Single"
+					 rowSelectionChange="onPressConfirmSelectLease" visibleRowCountMode="Fixed" visibleRowCount="10">
+					<table:columns>
+						<table:Column>
+							<Label text="Lease"/>
+							<table:template>
+								<Text text="{booking>Lease}" wrapping="true"/>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:Table>
+			</Panel>
+			<footer>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Button press="onPressConfirmSelectLease" text="OK"></Button>
+					<Button press="onPressDialogCancel" text="Cancel"></Button>
+				</Toolbar>
+			</footer>
+		</Page>
+	</Dialog>
+</core:FragmentDefinition>
