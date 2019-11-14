@@ -7,7 +7,7 @@ sap.ui.define([
 		},
 		insertRows:function(value,table,model,startRowIndex,startProperty){
 
-			var that = this;
+			// var that = this;
 			var rows = value.split(/\n/);
 			var cells = table.getColumns();
 			var templateItem = [];
@@ -28,9 +28,9 @@ sap.ui.define([
 				
 			}
 		
-			for (var int = 0; int < rows.length-1; int++) {
+			for ( int = 0; int < rows.length-1; int++) {
 				var rows_element = rows[int];
-				var cells = rows_element.split(/\t/);
+				 cells = rows_element.split(/\t/);
 
 				
 				var originalObject = model.getProperty(itemsPath+"/"+startRowIndex++);
