@@ -43,7 +43,7 @@ sap.ui.define([
 				}
 				
 				var lesserLength = Math.min(templateItem.length,(cells.length + startPropertyIndex));
-				for(int2 = startPropertyIndex,intValue=0; int2 < lesserLength; int2++,intValue++){
+				for(var int2 = startPropertyIndex,intValue=0; int2 < lesserLength; int2++,intValue++){
 					var name = templateItem[int2];
 					originalObject[name] =cells[intValue];
 					
@@ -62,7 +62,7 @@ sap.ui.define([
 			this.attachBrowserEvent('paste', function(e){ 
 				e.preventDefault();
 			    var text = (e.originalEvent || e).clipboardData.getData('text/plain');
-			    console.log(text);
+			    // console.log(text);
 			    that.insertRows(text,this,undefined);
 			});
 			this.getAggregation('rows').forEach(function(row) {
@@ -72,8 +72,8 @@ sap.ui.define([
 						
 						e.preventDefault();
 						  var text = (e.originalEvent || e).clipboardData.getData('text/plain') ;
-						    console.log(text);
-						    var domCell = jQuery.sap.domById(e.currentTarget.id)
+						    // console.log(text);
+						    var domCell = jQuery.sap.domById(e.currentTarget.id);
 						    var insertCell = jQuery('#'+domCell.id).control()[0];
 						    var itemsPath = that.getBindingPath('items');
 						    var pathRow = insertCell.getBindingContext().sPath;
