@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:valuehelp="sap.ui.comp.valuehelpdialog" xmlns:fb="sap.ui.comp.filterbar">
+	<Dialog contentHeight="80%" contentWidth="60%" draggable="true" showHeader="false">
+		<Page title="Customer">
+			<f:SimpleForm editable="true">
+				<fb:FilterBar
+		                advancedMode="true" showGoOnFB="true" search="onSearch" >
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem groupName="Customer" name="Customer" label="Customer">
+							<fb:control>
+								<Input id="idCustomer" type="Text"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="CustomerName" name="CustomerName" label="Customer Name">
+							<fb:control>
+								<Input id="idCustomerName" type="Text"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+			</f:SimpleForm>
+			<Panel expanded="true">
+				<table:Table id="idCustomerTable" rows="{booking>/listCustomer}" selectionMode="Single"
+					 rowSelectionChange="onPressConfirmSelectCustomer" visibleRowCountMode="Fixed" visibleRowCount="10">
+					<table:columns>
+						<table:Column>
+							<Label text="Customer"/>
+							<table:template>
+								<Text text="{booking>Customer}" wrapping="true"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="Customer Name"/>
+							<table:template>
+								<Text text="{booking>CustomerName}" wrapping="true"/>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:Table>
+			</Panel>
+			<footer>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Button press="onPressConfirmSelectCustomer" text="OK"></Button>
+					<Button press="onPressDialogCancel" text="Cancel"></Button>
+				</Toolbar>
+			</footer>
+		</Page>
+	</Dialog>
+</core:FragmentDefinition>

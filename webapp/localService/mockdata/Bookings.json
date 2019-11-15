@@ -1,16 +1,41 @@
 [{
-	"Customer": "100137",
-	"Lease": "100153"
+	"Customer": "100551",
+	"Lease": "100153",
+	"CustomerName": "Kyowa Shipping Co Ltd",
+	"LeaseType": "A",
+	"CreationDate": "/Date(1571155200000)/",
+	"CreatedBy": "B",
+	"EmployeeResponsible": "B"
 }, {
-	"Customer": "100137",
-	"Lease": "100154"
+	"Customer": "100551",
+	"Lease": "100154",
+	"CustomerName": "Kyowa Shipping Co Ltd",
+	"LeaseType": "B",
+	"CreationDate": "/Date(1568563200000)/",
+	"CreatedBy": "A",
+	"EmployeeResponsible": "A"
 }, {
-	"Customer": "100138",
-	"Lease": "100155"
+	"Customer": "100783",
+	"Lease": "100155",
+	"CustomerName": "Samudera Shipping Line Ltd.,",
+	"LeaseType": "C",
+	"CreationDate": "/Date(1568649600000)/",
+	"CreatedBy": "C",
+	"EmployeeResponsible": "C"
 }, {
-	"Customer": "100138",
-	"Lease": "100156"
+	"Customer": "100783",
+	"Lease": "100156",
+	"CustomerName": "Samudera Shipping Line Ltd.,",
+	"LeaseType": "D",
+	"CreationDate": "/Date(1573574400000)/",
+	"CreatedBy": "D",
+	"EmployeeResponsible": "D"
 }, {
-	"Customer": "100138",
-	"Lease": "100157"
+	"Customer": "100173",
+	"Lease": "100157",
+	"CustomerName": "CMA CGM",
+	"LeaseType": "E",
+	"CreationDate": "/Date(1567958400000)/",
+	"CreatedBy": "E",
+	"EmployeeResponsible": "E"
 }]

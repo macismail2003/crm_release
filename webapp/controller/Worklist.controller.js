@@ -94,7 +94,7 @@ sap.ui.define([
 				var aFilterItem = aLease.filter(function (oFilterItem) {
 					return oFilterItem.Lease === oSelectedContext.getProperty("Lease");
 				});
-				this.getView().getModel("booking").setProperty("/lease", aFilterItem[0].Lease);
+				this.getView().getModel("booking").setProperty("/Lease", aFilterItem[0].Lease);
 			}
 			oEvent.getSource().getParent().getParent().getParent().close();
 		},
@@ -117,6 +117,8 @@ sap.ui.define([
 		},
 
 		onPressGo: function (oEvent) {
+			var sCustomer = this.getView().getModel("booking").getProperty("/Customer");
+			var sLease = this.getView().getModel("booking").getProperty("/Lease");
 		var	items= [{
 					ItemNo: 1,
 					RequestedQuan: 1
@@ -136,6 +138,11 @@ sap.ui.define([
 			var bRB1 = this.byId("idRBOBS").getProperty("selected");
 			var bRB2 = this.byId("idRBOUT").getProperty("selected");
 			if (bRB1 || bRB2) {
+				var aFilterItem = this.aLeaseData.filter(function (oFilterItem) {
+					return (oFilterItem.Customer === sCustomer && oFilterItem.Lease === sLease);
+				});
+				this.getView().getModel("booking").setData(aFilterItem[0]);
+				this.getView().getModel("booking").setProperty("/Lease", aFilterItem[0].Lease);
 				this.getView().getModel("booking").setProperty("/tableVisibility", true);
 			} else {
 				this.getView().getModel("booking").setProperty("/tableVisibility", false);
@@ -170,6 +177,8 @@ sap.ui.define([
 					return oFilterItem.Location === oTableObject.Location;
 				});
 				this.getView().getModel("booking").setProperty("/availableQuantity", aFilterItem);
+				var oTable = sap.ui.core.Fragment.byId("idAvailableQuantityDialog", "idAvailableQuantityTable");
+				// oTable.getRows()[0].addStyleClass("bgcolor");               
 				this._oAvailableQuantityDialog.open();
 
 			}
@@ -193,13 +202,14 @@ sap.ui.define([
 			var oTable = sap.ui.core.Fragment.byId("idAvailableQuantityDialog", "idAvailableQuantityTable");
 			var a = this.getView().getModel().getProperty("/items");
 			var aSelectedIndices = oTable.getSelectedIndices();
+			var aSlice = aSelectedIndices;
 			var oMainModel = this.getModel("booking");
 			var iTableIndex = this.iDepoIndex;
 			// var sSelectionMode = this.getView().getModel("booking").getProperty("/SelectioMode")
 			if (aSelectedIndices.length > 0) {
 				
 				for(var k = 0; k < aSelectedIndices.length; k++){
-					var aSlice = aSelectedIndices;
+					
 					var iQuanIndex = aSelectedIndices[k];
 						var oSelectedQuanContext = oTable.getContextByIndex(iQuanIndex);
 						var oSelectedAvailQuan = oMainModel.getProperty(oSelectedQuanContext.getPath());
@@ -296,6 +306,30 @@ sap.ui.define([
 			} else {
 				oTable.getRows()[iIndex].getCells()[2].setValueState("None");
 			}
+		},
+		
+		onValueHelpCustRequested: function(oEvent){
+			if (!this._oCustomerDialog) {
+				this._oCustomerDialog = sap.ui.xmlfragment("idCustomerSearchDialog",
+					"com.seaco.zbooking.zbooking.view.fragments.CustomerDialog", this);
+				this.getView().addDependent(this._oCustomerDialog);
+			}
+			this.getView().getModel("booking").setProperty("/listCustomer", this.aLeaseData);
+			this._oCustomerDialog.open();
+		},
+		
+		onPressConfirmSelectCustomer: function(oEvent){
+			var oTable = sap.ui.core.Fragment.byId("idCustomerSearchDialog", "idCustomerTable");
+			var iSelectedIndex = oTable.getSelectedIndex();
+			if (iSelectedIndex !== -1) {
+				var oSelectedContext = oTable.getContextByIndex(iSelectedIndex);
+				var aLease = this.getView().getModel("booking").getProperty("/listCustomer");
+				var aFilterItem = aLease.filter(function (oFilterItem) {
+					return oFilterItem.Customer === oSelectedContext.getProperty("Customer");
+				});
+				this.getView().getModel("booking").setProperty("/Customer", aFilterItem[0].Customer);
+			}
+			oEvent.getSource().getParent().getParent().getParent().close();
 		}
 
 	});

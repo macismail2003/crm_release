@@ -76,6 +76,12 @@
 				"preload": true
 			}
 		},
+		
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
 		"services": {
 			"ShellUIService": {
 				"factoryName": "sap.ushell.ui5service.ShellUIService",

@@ -8,8 +8,16 @@
 					<PropertyRef Name="Customer"/>
 					<PropertyRef Name="Lease"/>
 				</Key>
-				<Property Name="Customer" Type="Edm.String" MaxLength="50"/>
-				<Property Name="Lease" Type="Edm.String" MaxLength="50"/>
+				<Property Name="Customer" Type="Edm.String" MaxLength="10"/>
+				<Property Name="Lease" Type="Edm.String" MaxLength="10"/>
+				<Property Name="CustomerName" Type="Edm.String" MaxLength="35"/>
+				<Property Name="SalesOrg" Type="Edm.String" MaxLength="4"/>
+				<Property Name="LeaseType" Type="Edm.String" MaxLength="4"/>
+				<Property Name="CreationDate" Type="Edm.DateTime" Nullable="false"/>
+				<Property Name="CreatedBy" Type="Edm.String" MaxLength="12"/>
+				<Property Name="Material" Type="Edm.String" MaxLength="18"/>
+				<Property Name="Status" Type="Edm.String" MaxLength="50"/>
+				<Property Name="EmployeeResponsible" Type="Edm.String" MaxLength="50"/>
 			</EntityType>
 			<EntityType Name="BookingItem">
 				<Key>
