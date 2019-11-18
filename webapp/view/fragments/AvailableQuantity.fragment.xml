@@ -22,7 +22,7 @@
 							<table:Column>
 							<Label text="Requested Quantity" />
 							<table:template>
-								<Input value="{booking>RequestedQuan}"/>
+								<Input value="{booking>RequestedQuan}" type="Number"/>
 							</table:template>
 						</table:Column>
 					</table:columns>

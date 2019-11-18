@@ -1,0 +1,26 @@
+[{
+	"SerialNo": "APLU9008425",
+	"UnitType": "T2",
+	"ProductType": "Tank",
+	"DepoCode": "1549"
+}, {
+	"SerialNo": "APLU9008426",
+	"UnitType": "B2",
+	"ProductType": "Box",
+	"DepoCode": "1546"
+}, {
+	"SerialNo": "APLU9008427",
+	"UnitType": "T241C",
+	"ProductType": "Tank",
+	"DepoCode": "1548"
+}, {
+	"SerialNo": "APLU9008428",
+	"UnitType": "BX2",
+	"ProductType": "Box",
+	"DepoCode": "1547"
+}, {
+	"SerialNo": "APLU9008429",
+	"UnitType": "T2",
+	"ProductType": "Tank",
+	"DepoCode": "1550"
+}]

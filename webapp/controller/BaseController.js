@@ -1,8 +1,10 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/UIComponent",
-	"sap/m/library"
-], function (Controller, UIComponent, mobileLibrary) {
+	"sap/m/library",
+	"sap/ui/core/message/Message",
+    "sap/ui/core/MessageType"
+], function (Controller, UIComponent, mobileLibrary, Message, MessageType) {
 	"use strict";
 
 	// shortcut for sap.m.URLHelper
@@ -60,6 +62,41 @@ sap.ui.define([
 				oViewModel.getProperty("/shareSendEmailMessage")
 			);
 		},
+		
+		getMessageManager: function(){
+            return sap.ui.getCore().getMessageManager();
+        },
+		
+		addMessages: function(sTarget, sMessage, sLongText, oMessageProcessor){
+        	var oMessageManager = this.getMessageManager();
+        	//Remove existing messages for that control
+        	// this.removeMessage(sTarget,oMessageProcessor);
+        	//Add a new message
+            oMessageManager.addMessages(
+            	    new Message({
+            	    	message: sMessage,
+            	    	description: sLongText,
+            	        type: MessageType.Error,
+            	        target: sTarget,
+            	        processor: oMessageProcessor
+            	     })
+            	);
+        },
+		
+		removeMessage: function(sTarget,oMessageProcessor){
+        	var oMessageManager = this.getMessageManager();
+        	oMessageManager.removeMessages(oMessageProcessor.getMessagesByPath(sTarget)); 
+        },
+        
+        initializeMessageManager: function(oMessageProcessor){
+        	var oMessageManager = this.getMessageManager();
+            oMessageManager.registerMessageProcessor(oMessageProcessor);
+            this.getView().setModel(this.getMessageModel(),"message");
+        },
+        
+        getMessageModel: function(){
+        	return this.getMessageManager().getMessageModel();
+        },
 
 		/**
 		* Adds a history entry in the FLP page history

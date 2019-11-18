@@ -1,0 +1,37 @@
+[{
+	"Location": "Singapore",
+	"Depo": "Singapore",
+	"LocationCode": "SG-SIN",
+	"DepoCode": "1547",
+	"AvailableQuan": 6
+}, {
+	"Location": "Singapore",
+	"Depo": "Singapore",
+	"LocationCode": "SG-SIN",
+	"DepoCode": "1543",
+	"AvailableQuan": 4
+}, {
+	"Location": "China",
+	"LocationCode": "CH-CHI",
+	"Depo": "China",
+	"DepoCode": "1541",
+	"AvailableQuan": 7
+}, {
+	"Location": "China",
+	"Depo": "China",
+	"LocationCode": "CN-CHI",
+	"DepoCode": "1540",
+	"AvailableQuan": 5
+}, {
+	"Location": "Singapore",
+	"Depo": "Singapore",
+	"LocationCode": "SG-SIN",
+	"DepoCode": "1538",
+	"AvailableQuan": 5
+}, {
+	"Location": "China",
+	"Depo": "China",
+	"LocationCode": "CH-CHI",
+	"DepoCode": "1539",
+	"AvailableQuan": 4
+}]

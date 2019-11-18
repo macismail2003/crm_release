@@ -45,7 +45,8 @@
 							<!--<Label   text="Customer Name"/>-->
 							<Button text="Get Lease" press="onPressGetLease"/>
 							<Label text="Lease"/>
-							<MultiInput id="multiInput" value="{booking>/Lease}" valueHelpRequest="onValueHelpLeaseRequested"/>
+							<Input value="{booking>/Lease}" id="multiInput"/>
+							<!--<MultiInput id="multiInput" value="{booking>/Lease}" valueHelpRequest="onValueHelpLeaseRequested"/>-->
 							<core:Title text=""/>
 							<RadioButton groupName="GroupA" text="Order By Serial" id="idRBOBS"/>
 							<RadioButton groupName="GroupA" text="Order By Unit Type" id="idRBOUT"/>
@@ -109,7 +110,7 @@
 							<table:Column width="auto">
 								<Label text="Location"/>
 								<table:template>
-									<Input value="{Location}" editable="{booking>/unitTypeEditable}"/>
+									<MultiInput value="{Location}" editable="{booking>/unitTypeEditable}" id="idLocation" valueHelpRequest="onValueHelpLocationRequested"/>
 								</table:template>
 							</table:Column>
 							<table:Column visible="{booking>/unitTypeEditable}">
@@ -148,8 +149,10 @@
 		</content>
 			<footer >
 			<OverflowToolbar visible="{booking>/tableVisibility}">
+				<Button id="messagePopoverBtn" icon="sap-icon://message-popup" type="Emphasized" text="{=${message>/}.length}"
+				visible="{=!!${message>/}.length}" press="handleMessagePopoverPress"/>
 				<ToolbarSpacer/>
-				<Button text="Validate" press="onCheck" type="Emphasized"/>
+				<Button text="Validate" press="onValidate" type="Emphasized"/>
 				<!--<Button text="Validate" press="onValidate"/>-->
 				<Button text="Save" press="onSave"/>
 			</OverflowToolbar>

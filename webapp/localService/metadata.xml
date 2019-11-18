@@ -26,6 +26,7 @@
 				<Property Name="SerialNo" Type="Edm.String" MaxLength="50"/>
 				<Property Name="ItemNo" Type="Edm.Int32" MaxLength="10"/>
 				<Property Name="UnitType" Type="Edm.String" MaxLength="10"/>
+				<Property Name="ProductType" Type="Edm.String" MaxLength="10"/>
 				<Property Name="RequestedQuan" Type="Edm.Int32" MaxLength="10"/>
 				<Property Name="Location" Type="Edm.String" MaxLength="10"/>
 				<Property Name="DepoCode" Type="Edm.String" MaxLength="10"/>
@@ -33,7 +34,7 @@
 				<Property Name="Comments" Type="Edm.String" MaxLength="10"/>
 				<Property Name="LastCargo" Type="Edm.String" MaxLength="10"/>
 			</EntityType>
-			<EntityType Name="Location">
+			<EntityType Name="Quantity">
 				<Key>
 					<PropertyRef Name="LocationCode"/>
 					<PropertyRef Name="DepoCode"/>
@@ -42,12 +43,21 @@
 				<Property Name="LocationCode" Type="Edm.String" MaxLength="10"/>
 				<Property Name="Depo" Type="Edm.String" MaxLength="10"/>
 				<Property Name="DepoCode" Type="Edm.String" MaxLength="10"/>
-				<Property Name="AvailableQuan" Type="Edm.Int32" MaxLength="10"/>
-				<Property Name="RequestedQuan" Type="Edm.Int32" MaxLength="10"/>
+				<Property Name="AvailableQuan" Type="Edm.Int32"/>
+				<Property Name="RequestedQuan" Type="Edm.Int32" Nullable="true"/>
+			</EntityType>
+			<EntityType Name="Location">
+				<Key>
+					<PropertyRef Name="LocationCode"/>
+				</Key>
+				<Property Name="LocationCode" Type="Edm.String" MaxLength="10"/>
+				<Property Name="Country" Type="Edm.String" MaxLength="10"/>
+				<Property Name="Region" Type="Edm.String" MaxLength="10"/>
 			</EntityType>
 			<EntityContainer Name="BookingLeasing" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
 				<EntitySet EntityType="BookingModel.Booking" Name="Bookings"/>
 				<EntitySet EntityType="BookingModel.BookingItem" Name="BookingItems"/>
+				<EntitySet EntityType="BookingModel.Quantity" Name="QuantitySet"/>
 				<EntitySet EntityType="BookingModel.Location" Name="LocationSet"/>
 			</EntityContainer>
 		</Schema>
